@@ -1,2 +1,7 @@
 .rake_test_cache
 
+
+
+# ignore tmp and cookbooks dir due to use of librarian-chef
+tmp
+cookbooks
