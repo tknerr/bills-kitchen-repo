@@ -10,6 +10,8 @@ cookbook 'graphite', '>= 0.3.0'
 
 cookbook 'vagrant-ohai',
    :path => '../my-cookbooks/vagrant-ohai'
+cookbook 'motd',
+   :path => '../my-cookbooks/motd'
    
 # cookbook 'postgresql',
 #   :git => 'https://github.com/findsyou/cookbooks',

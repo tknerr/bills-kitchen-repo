@@ -15,6 +15,11 @@ SITE
     runit (0.15.0)
 
 PATH
+  remote: ../my-cookbooks/motd
+  specs:
+    motd (0.0.1)
+
+PATH
   remote: ../my-cookbooks/vagrant-ohai
   specs:
     vagrant-ohai (1.0.0)
@@ -22,6 +27,7 @@ PATH
 DEPENDENCIES
   apache2 (>= 1.0.0)
   graphite (>= 0.3.0)
+  motd (>= 0)
   munin (>= 1.0.0)
   ntp (>= 1.0.0)
   vagrant-ohai (>= 0)
