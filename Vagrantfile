@@ -14,13 +14,13 @@ Vagrant::Config.run do |config|
   #
   config.vm.define :chef_server do | chef_server_config |
     
-  chef_server_config.vm.box = "chef-server-on-ubuntu-12.04-server-amd64-vagrant"
-  chef_server_config.vm.box_url = "W:\\boxes\\chef-server-on-ubuntu-12.04-server-amd64-vagrant.box"
+    chef_server_config.vm.box = "chef-server-on-ubuntu-12.04-server-amd64-vagrant"
+    chef_server_config.vm.box_url = "W:\\boxes\\chef-server-on-ubuntu-12.04-server-amd64-vagrant.box"
     
-	chef_server_config.vm.customize do |vm|
-      vm.memory_size = 1024
-      vm.name = "Chef Server"
-    end
+    chef_server_config.vm.customize ["modifyvm", :id, "--memory", "2048"]
+    chef_server_config.vm.customize ["modifyvm", :id, "--cpus", "2"]
+    chef_server_config.vm.customize ["modifyvm", :id, "--name", "Chef Server"] 
+
     chef_server_config.vm.host_name = "chef-server"
     chef_server_config.vm.network :hostonly, "33.33.3.10"
     chef_server_config.vm.forward_port 22, 22310 
@@ -33,14 +33,12 @@ Vagrant::Config.run do |config|
     
     bare_os_image_config.vm.box = "ubuntu-12.04-server-amd64-bare-os"
     bare_os_image_config.vm.box_url = "W:\\boxes\\ubuntu-12.04-server-amd64-bare-os.box"
-    
-    bare_os_image_config.vm.customize do |vm|
-      vm.memory_size = 1024
-      vm.name = "Bare OS Image (Bootstrap Me!)"
-    end
+        
+    bare_os_image_config.vm.customize ["modifyvm", :id, "--memory", "512"]
+    bare_os_image_config.vm.customize ["modifyvm", :id, "--name", "Bare OS Image (Bootstrap Me!)"] 
+
     bare_os_image_config.vm.host_name = "bare-os-image"
     bare_os_image_config.vm.network :hostonly, "33.33.3.11"
     bare_os_image_config.vm.forward_port 22, 22311
   end
-
 end
