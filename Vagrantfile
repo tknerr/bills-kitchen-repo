@@ -8,14 +8,21 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://dl.dropbox.com/u/13494216/ubuntu-12.04-server-amd64-vagrant.box"
 
   #
-  # Runs a pre-baked Chef Server VM that you can immediately use.
-  # * in <current_dir>/.chef you find a pre-configured knife.rb and client certificates
-  # * the login for the webui is admin/t0ps3cr3t. 
+  # Vagrant VM for the Chef Server. Once the Vagrant VM is up, 
+  # use `knife-server` to bootstrap the chef server:
+  # `knife server bootstrap standalone --ssh-user vagrant \ 
+  #   --ssh-password vagrant --node-name chef-server \ 
+  #   --host 33.33.3.10 --bootstrap-version 10.14.4.rc.0`
+  # 
+  # * in <current_dir>/.chef you find a pre-configured knife.rb
+  # * knife-server will create `cheffe.pem` and `validation.pem` in <current_dir>/.chef
+  # * the REST API is available at https://33.33.3.10 (and http://33.33.3.10:4000)
+  # * the Webui is available at http://33.33.3.10:4040, login is admin/chefchef 
   #
   config.vm.define :chef_server do | chef_server_config |
     
-    chef_server_config.vm.box = "chef-server-on-ubuntu-12.04-server-amd64-vagrant"
-    chef_server_config.vm.box_url = "http://dl.dropbox.com/u/13494216/chef-server-on-ubuntu-12.04-server-amd64-vagrant.box"
+    chef_server_config.vm.box = "ubuntu-12.04-server-amd64-bare-os"
+    chef_server_config.vm.box_url = "http://dl.dropbox.com/u/13494216/ubuntu-12.04-server-amd64-bare-os.box"
     
     chef_server_config.vm.customize ["modifyvm", :id, "--memory", "2048"]
     chef_server_config.vm.customize ["modifyvm", :id, "--cpus", "2"]
