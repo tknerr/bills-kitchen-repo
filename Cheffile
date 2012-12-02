@@ -3,10 +3,10 @@
 
 site 'http://community.opscode.com/api/v1'
 
-#cookbook 'apache2', '>= 1.0.0'
-#cookbook 'ntp', '>= 1.0.0'
-#cookbook 'munin', '>= 1.0.0'
-#cookbook 'graphite', '>= 0.3.0'
+cookbook 'apache2', '>= 1.0.0'
+cookbook 'ntp', '>= 1.0.0'
+cookbook 'munin', '>= 1.0.0'
+cookbook 'graphite', '>= 0.3.0'
 
 cookbook 'vagrant-ohai',
    :path => '../my-cookbooks/vagrant-ohai'
