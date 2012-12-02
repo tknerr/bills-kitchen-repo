@@ -4,8 +4,8 @@
 Vagrant::Config.run do |config|
 
   # default base box
-  config.vm.box = "ubuntu-12.04-server-amd64-vagrant"
-  config.vm.box_url = "http://dl.dropbox.com/u/13494216/ubuntu-12.04-server-amd64-vagrant.box"
+  config.vm.box = "opscode-ubuntu-12.04"
+  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
 
   #
   # Vagrant VM for the Chef Server. Once the Vagrant VM is up, 
